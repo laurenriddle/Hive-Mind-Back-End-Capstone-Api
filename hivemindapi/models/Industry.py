@@ -9,8 +9,6 @@ class Industry(models.Model):
    
     """
 
-
-
     industry = models.CharField(max_length=75, null=True)
     
 
