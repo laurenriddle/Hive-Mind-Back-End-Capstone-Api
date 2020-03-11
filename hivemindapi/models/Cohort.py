@@ -8,7 +8,7 @@ class Cohort(SafeDeleteModel):
     """
     This makes an cohort instance and defines the columns in the DB
    
-    NOTE: This model imports the SafeDeleteModel into it because of 
+    NOTE: This model imports the Django SafeDeleteModel
     """
 
         _safedelete_policy = HARD_DELETE_NOCASCADE
