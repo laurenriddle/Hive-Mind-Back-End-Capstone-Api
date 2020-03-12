@@ -27,7 +27,7 @@ class CompanySerializer(serializers.HyperlinkedModelSerializer):
 class Companies(ViewSet):
     '''
     
-    This class houses functions for List, Retrieve, Destroy, and Create for industries
+    This class houses functions for List, Create, and Retrieve companies
 
    
     '''
@@ -37,10 +37,10 @@ class Companies(ViewSet):
         Handles GET requests for a single Interview 
         Returns:
             Response --- JSON serialized Interviews instance
-        To access a single industry: 
-        http://localhost:8000/industries/1
+        To access a single company: 
+        http://localhost:8000/companies/1
 
-        NOTE: Replace the 1 with any ID you wish to retrieve 
+        NOTE: Replace the 1 with any company ID you wish to retrieve 
         '''
         try:
             company = Company.objects.get(pk=pk)
@@ -56,16 +56,26 @@ class Companies(ViewSet):
         Returns: 
         Response -- JSON serialized list of interview
 
-        To access all industries: 
-        http://localhost:8000/industries
+        To access all companies: 
+        http://localhost:8000/companies
+
+        To access companies by NAME:
+        http://localhost:8000/companies?name=atiba
+
+        NOTE: Replace atiba with any company name that you would like to find
+
         '''
         user = request.auth.user.applicant.id
 
         # list interview
-        companies = Companies.objects.all()
+        companies = Company.objects.all()
+         # filter by applicant ID
+        name = self.request.query_params.get('name', None)
+        if name is not None:
+            companies = companies.filter(name__contains=name)
 
         # take repsonse and covert to JSON
-        serializer = IndustrySerializer(companies, many=True, context={'request': request})
+        serializer = CompanySerializer(companies, many=True, context={'request': request})
 
         # return repsonse as JSON
         return Response(serializer.data)
