@@ -26,12 +26,9 @@ class IndustrySerializer(serializers.HyperlinkedModelSerializer):
 class Industries(ViewSet):
     '''
     
-    This class houses functions for List, Retrieve, Destroy, and Create for industries
+    This class houses functions for List and Retrieve for industries
 
-    To access a single industry: 
-    http://localhost:8000/industries/1
-
-    NOTE: Replace the 1 with any ID you wish to retrieve 
+   
     '''
 
     def retrieve(self, request, pk=None):
@@ -39,6 +36,11 @@ class Industries(ViewSet):
         Handles GET requests for a single Interview 
         Returns:
             Response --- JSON serialized Interviews instance
+
+        To access a single industry: 
+        http://localhost:8000/industries/1
+
+        NOTE: Replace the 1 with any ID you wish to retrieve 
         '''
         try:
             industry = Industry.objects.get(pk=pk)
