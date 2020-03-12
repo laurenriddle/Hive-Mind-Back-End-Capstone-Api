@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-import Cohort from "./Cohort.py"
+from Cohort import Cohort
 class Applicant(models.Model):
     """
     This makes an applicant instance and defines the columns in the DB
