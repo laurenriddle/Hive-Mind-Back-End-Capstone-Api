@@ -17,7 +17,7 @@ from django.urls import include, path
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
 from hivemindapi.models import *
-from hivemindapi.views import Applicants, Users, Interviews
+from hivemindapi.views import Applicants, Users, Interviews, Industries
 router = routers.DefaultRouter(trailing_slash=False)
 
 # This is just a generic route
@@ -25,6 +25,7 @@ router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', Users, 'user')
 router.register(r'applicants', Applicants, 'applicant')
 router.register(r'interviews', Interviews, 'interview')
+router.register(r'industries', Industries, 'industry')
 
 
 

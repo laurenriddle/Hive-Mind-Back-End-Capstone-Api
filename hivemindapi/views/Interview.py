@@ -74,10 +74,35 @@ class Interviews(ViewSet):
         Handles the GET all requstes to the interview resource
         Returns: 
         Response -- JSON serialized list of interview
+
+        To filter by APPLICANT and COMPANY: 
+        http://localhost:8000/interviews?applicant=1&&company=1
+
+        NOTE: Replace the 1 with whichever ID number you need.
+
+        To filter by APPLICANT: 
+        http://localhost:8000/interviews?applicant=1
+
+        To filter by COMPANY:
+        http://localhost:8000/interviews?company=1
+
         '''
+        # gets all interviews
+        interviews = Interview.objects.all()
+
+        # defines the user ID
         user = request.auth.user.applicant.id
-        # list interview
-        interviews = Interview.objects.filter(applicant_id=user)
+
+        # filter by applicant ID
+        applicant_id = self.request.query_params.get('applicant', None)
+        if applicant_id is not None:
+            interviews = interviews.filter(applicant__id=applicant_id)
+
+        # filter by company ID
+        company_id = self.request.query_params.get('company', None)
+        if company_id is not None:
+            interviews = interviews.filter(company__id=company_id)
+       
 
         # take repsonse and covert to JSON
         serializer = InterviewSerializer(interviews, many=True, context={'request': request})
