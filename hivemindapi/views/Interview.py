@@ -101,4 +101,19 @@ class Interviews(ViewSet):
         except Interview.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
         except Exception as ex:
-            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
+    def update(self, request, pk=None):
+
+        interview = Interview.objects.get(pk=request.auth.user.applicant.id)
+        interview.company_id = request.data['company_id']
+        interview.offer = request.data['offer']
+        interview.position = request.data['position']
+        interview.date = request.data['date']
+        interview.review = request.data['review']
+        interview.advice = request.data['advice']
+        interview.interview_type = request.data['interview_type']
+        interview.in_person = request.data['in_person']
+        interview.code_challege = request.data['code_challege']
+        interview.applicant_id = request.auth.user.applicant.id
+        interview.save()
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
