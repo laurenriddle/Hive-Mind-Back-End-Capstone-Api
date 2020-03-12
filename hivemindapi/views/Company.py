@@ -9,7 +9,7 @@ from .Industry import IndustrySerializer
 
 class CompanySerializer(serializers.HyperlinkedModelSerializer):
     '''
-    JSON serializer for interviews
+    JSON serializer for companies
     Arguments: serializers.HyperlinkedModelSerializer
     Author: Lauren Riddle
     '''
@@ -34,9 +34,9 @@ class Companies(ViewSet):
 
     def retrieve(self, request, pk=None):
         '''
-        Handles GET requests for a single Interview 
+        Handles GET requests for a single Company 
         Returns:
-            Response --- JSON serialized Interviews instance
+            Response --- JSON serialized company instance
         To access a single company: 
         http://localhost:8000/companies/1
 
@@ -52,9 +52,9 @@ class Companies(ViewSet):
 
     def list(self, request):
         '''
-        Handles the GET all requstes to the interview resource
+        Handles the GET all requstes to the company resource
         Returns: 
-        Response -- JSON serialized list of interview
+        Response -- JSON serialized list of companies
 
         To access all companies: 
         http://localhost:8000/companies
@@ -67,9 +67,10 @@ class Companies(ViewSet):
         '''
         user = request.auth.user.applicant.id
 
-        # list interview
+        # list companies
         companies = Company.objects.all()
-         # filter by applicant ID
+        
+         # filter by company name
         name = self.request.query_params.get('name', None)
         if name is not None:
             companies = companies.filter(name__contains=name)
@@ -78,4 +79,25 @@ class Companies(ViewSet):
         serializer = CompanySerializer(companies, many=True, context={'request': request})
 
         # return repsonse as JSON
+        return Response(serializer.data)
+    
+    def create(self, request):
+        '''
+        Handles POST operations
+        Returns: 
+            Response --- JSON serialized company instance
+
+        To create a company, make a POST to this URL:
+        http://localhost:8000/companies
+
+        '''
+        new_company = Company()
+        new_company.name = request.data['name']
+        new_company.city = request.data['city']
+        new_company.industry_id = request.data['industry_id']
+        
+        new_company.save()
+
+        serializer = CompanySerializer(new_company, context ={'request': request})
+
         return Response(serializer.data)
