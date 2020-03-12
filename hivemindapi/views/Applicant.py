@@ -39,7 +39,7 @@ class ApplicantSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field='id'
         )
         depth = 2
-        fields = ('id', 'user', 'address', 'city', 'phone', 'zipcode')
+        fields = ('id', 'linkedin_profile', 'user', 'cohort_id', 'is_employed')
 
 
 class Users(ViewSet):
@@ -78,15 +78,15 @@ class Applicants(ViewSet):
         Returns:
             Response -- JSON serialized list of applicants
         """
-        applicant = Applicant.objects.filter(id=request.auth.user.applicant.id)
-
+        applicants = Applicant.objects.filter(id=request.auth.user.applicant.id)
+        print("HELLO", applicants)
         applicant = self.request.query_params.get('applicant', None)
 
         if applicant is not None:
             applicants = applicants.filter(id=applicant)
 
         serializer = ApplicantSerializer(
-            applicant, many=True, context={'request': request})
+            applicants, many=True, context={'request': request})
 
         return Response(serializer.data)
 
