@@ -1,0 +1,18 @@
+[
+    {
+        "model": "hivemindapi.interview",
+        "pk": 1,
+        "fields": {
+            "offer": false,
+            "position": "Software Developer I",
+            "date": "2020-20-4",
+            "review": "The interview went well. Very nice company, with great people. Tech stack includes Python, Django, React, and Javascript.",
+            "advice": "Know OOP principles really well and prepare for a string algorithm whiteboard question.",
+            "interview_type": "First Interview",
+            "in_person": true,
+            "code_challenge": true,
+            "applicant_id": 1,
+            "company_id": 1
+        }
+    }
+]
