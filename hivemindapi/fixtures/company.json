@@ -1,0 +1,29 @@
+[
+    {
+        "model": "hivemindapi.company",
+        "pk": 1,
+        "fields": {
+            "name": "Dollar General",
+            "city": "Nashville",
+            "industry_id": 11
+        }
+    },
+    {
+        "model": "hivemindapi.company",
+        "pk": 2,
+        "fields": {
+            "name": "Ingram Content Group",
+            "city": "Nashville",
+            "industry_id": 9        
+        }
+    },
+    {
+        "model": "hivemindapi.company",
+        "pk": 3,
+        "fields": {
+            "name": "Atiba",
+            "city": "Nashville",
+            "industry_id": 7
+        }
+    }
+]

@@ -1,6 +1,6 @@
 [
     {
-        "model": "auth.user",
+        "model": "hivemindapi.applicant",
         "pk": 1,
         "fields": {
             "user_id": 1,
