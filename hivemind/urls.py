@@ -16,11 +16,22 @@ Including another URLconf
 from django.urls import include, path
 from rest_framework import routers
 from rest_framework.authtoken.views import obtain_auth_token
-
+from hivemindapi.models import *
+from hivemindapi.views import Applicants, Users
 router = routers.DefaultRouter(trailing_slash=False)
+
+# This is just a generic route
+# router.register(r'plural', ViewName, 'singular')
+router.register(r'users', Users, 'user')
+router.register(r'applicants', Applicants, 'applicant')
+
+
+
 
 urlpatterns = [
     path('', include(router.urls)),
+    # path('register', register_user),
+    # path('login', login_user),
     path('api-token-auth/', obtain_auth_token),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]
