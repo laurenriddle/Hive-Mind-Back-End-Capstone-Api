@@ -48,6 +48,12 @@ class Users(ViewSet):
         """Handle GET requests for single user
         Returns:
             Response -- JSON serialized user instance
+        To retrieve a user, make a GET request to:
+        http://localhost:8000/applicants 
+        or you can also make a GET request to 
+        http://localhost:8000/applicants/1
+
+        NOTE: Replace the 1 with the ID of the APPLICANT that corresponds with the user you want to retrieve.
         """
         try:
             user = User.objects.get(pk=pk)
@@ -64,6 +70,11 @@ class Applicants(ViewSet):
         """Handle GET requests for single user
         Returns:
             Response -- JSON serialized user instance
+        To retrieve a applicant, make a GET request to:
+     
+        http://localhost:8000/applicants/1
+
+        NOTE: Replace the 1 with the ID of the applicant that corresponds with the user you want to retrieve.
         """
         try:
             applicant = Applicant.objects.get(pk=pk)
@@ -77,6 +88,10 @@ class Applicants(ViewSet):
         """Handle GET requests to applicants resource
         Returns:
             Response -- JSON serialized list of applicants
+
+        To retrieve a user, make a GET request to:
+        http://localhost:8000/applicants 
+        
         """
         applicants = Applicant.objects.filter(id=request.auth.user.applicant.id)
         print("HELLO", applicants)
@@ -97,6 +112,10 @@ class Applicants(ViewSet):
         Handle PUT requests for an applicant
         Returns:
             Response -- Empty body with 204 status code
+            
+        To update a user, make a PUT request to:
+        http://localhost:8000/applicants 
+        
         """
         
 

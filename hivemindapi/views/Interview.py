@@ -36,6 +36,11 @@ class Interviews(ViewSet):
         Handles GET requests for a single Interview 
         Returns:
             Response --- JSON serialized Interviews instance
+
+        To retrieve a single Interview:
+        http://localhost:8000/interviews/1
+
+        NOTE: Replace the 1 with the ID number of the interview you wish to retrieve.
         '''
         try:
             interview = Interview.objects.get(pk=pk)
@@ -49,6 +54,10 @@ class Interviews(ViewSet):
         Handles POST operations
         Returns: 
             Response --- JSON serialized Interview instance
+
+        To create an Interview, make a POST to this URL:
+        http://localhost:8000/interviews
+
         '''
         new_interview = Interview()
         new_interview.company_id = request.data['company_id']
@@ -115,6 +124,11 @@ class Interviews(ViewSet):
         Handles DELETE request for a single interview
         Returns:
             Response -- 200, 404, or 500 status code
+
+        To DELETE an interview, make a delete request to:
+        http://localhost:8000/interviews/1
+
+        NOTE: Replace the 1 with the ID of the interview you wish to delete.
         '''
 
         try: 
@@ -127,7 +141,18 @@ class Interviews(ViewSet):
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
+
     def update(self, request, pk=None):
+        '''
+        Handles PUT request for a single interview
+        Returns:
+            Response -- 200, 404, or 500 status code
+
+        To UPDATE an interview, make a PUT request to:
+        http://localhost:8000/interviews/1
+
+        NOTE: Replace the 1 with the ID of the interview you wish to update.
+        '''
 
         interview = Interview.objects.get(pk=request.auth.user.applicant.id)
         interview.company_id = request.data['company_id']
