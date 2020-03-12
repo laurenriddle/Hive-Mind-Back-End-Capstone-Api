@@ -43,7 +43,11 @@ class ApplicantSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class Users(ViewSet):
-
+    '''
+    
+    This class houses functions for Retrieve for users
+   
+    '''
     def retrieve(self, request, pk=None):
         """Handle GET requests for single user
         Returns:
@@ -57,15 +61,19 @@ class Users(ViewSet):
         """
         try:
             user = User.objects.get(pk=pk)
-            serializer = UsersSerializer(
-                user, context={'request': request})
+            serializer = UsersSerializer(user, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
 
 class Applicants(ViewSet):
+    '''
+    
+    This class houses functions for List, Retrieve, and Update for applicants
 
+   
+    '''
     def retrieve(self, request, pk=None):
         """Handle GET requests for single user
         Returns:

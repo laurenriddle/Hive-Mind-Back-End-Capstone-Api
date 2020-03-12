@@ -28,7 +28,7 @@ class InterviewSerializer(serializers.HyperlinkedModelSerializer):
 class Interviews(ViewSet):
     '''
     
-    # This class houses functions for List, Retrieve, Destroy, and Create
+    This class houses functions for List, Retrieve, Destroy, Update, and Create
     '''
 
     def retrieve(self, request, pk=None):
