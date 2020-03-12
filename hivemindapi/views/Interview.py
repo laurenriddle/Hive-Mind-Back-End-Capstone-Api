@@ -10,7 +10,7 @@ from .Applicant import ApplicantSerializer
 
 class InterviewSerializer(serializers.HyperlinkedModelSerializer):
     '''
-    JSON serializer for payment types
+    JSON serializer for interviews
     Arguments: serializers.HyperlinkedModelSerializer
     Author: Lauren Riddle
     '''
@@ -71,13 +71,12 @@ class Interviews(ViewSet):
 
     def list(self, request):
         '''
-        Handles the GET all requstes to the payment types resource
+        Handles the GET all requstes to the interview resource
         Returns: 
-        Response -- JSON serialized list of Payment Types
-        Author: Lauren Riddle
+        Response -- JSON serialized list of interview
         '''
         user = request.auth.user.applicant.id
-        # list payment types
+        # list interview
         interviews = Interview.objects.filter(applicant_id=user)
 
         # take repsonse and covert to JSON
@@ -88,19 +87,18 @@ class Interviews(ViewSet):
 
     def destroy(self, request, pk=None):
         '''
-        Handles DELETE request for a single payment type
+        Handles DELETE request for a single interview
         Returns:
             Response -- 200, 404, or 500 status code
-        Author: Lauren Riddle
         '''
 
         try: 
-            type = PaymentType.objects.get(pk=pk)
-            type.delete(force_policy=None)
+            interview = Interview.objects.get(pk=pk)
+            interview.delete(force_policy=None)
 
             return Response({}, status=status.HTTP_204_NO_CONTENT)
 
-        except PaymentType.DoesNotExist as ex:
+        except Interview.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)    
