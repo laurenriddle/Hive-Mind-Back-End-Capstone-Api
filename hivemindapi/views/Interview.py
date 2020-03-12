@@ -36,6 +36,11 @@ class Interviews(ViewSet):
         Handles GET requests for a single Interview 
         Returns:
             Response --- JSON serialized Interviews instance
+
+        To retrieve a single Interview:
+        http://localhost:8000/interviews/1
+
+        NOTE: Replace the 1 with the ID number of the interview you wish to retrieve.
         '''
         try:
             interview = Interview.objects.get(pk=pk)
@@ -49,6 +54,10 @@ class Interviews(ViewSet):
         Handles POST operations
         Returns: 
             Response --- JSON serialized Interview instance
+
+        To create an Interview, make a POST to this URL:
+        http://localhost:8000/interviews
+
         '''
         new_interview = Interview()
         new_interview.company_id = request.data['company_id']
@@ -74,10 +83,35 @@ class Interviews(ViewSet):
         Handles the GET all requstes to the interview resource
         Returns: 
         Response -- JSON serialized list of interview
+
+        To filter by APPLICANT and COMPANY: 
+        http://localhost:8000/interviews?applicant=1&&company=1
+
+        NOTE: Replace the 1 with whichever ID number you need.
+
+        To filter by APPLICANT: 
+        http://localhost:8000/interviews?applicant=1
+
+        To filter by COMPANY:
+        http://localhost:8000/interviews?company=1
+
         '''
+        # gets all interviews
+        interviews = Interview.objects.all()
+
+        # defines the user ID
         user = request.auth.user.applicant.id
-        # list interview
-        interviews = Interview.objects.filter(applicant_id=user)
+
+        # filter by applicant ID
+        applicant_id = self.request.query_params.get('applicant', None)
+        if applicant_id is not None:
+            interviews = interviews.filter(applicant__id=applicant_id)
+
+        # filter by company ID
+        company_id = self.request.query_params.get('company', None)
+        if company_id is not None:
+            interviews = interviews.filter(company__id=company_id)
+       
 
         # take repsonse and covert to JSON
         serializer = InterviewSerializer(interviews, many=True, context={'request': request})
@@ -90,6 +124,11 @@ class Interviews(ViewSet):
         Handles DELETE request for a single interview
         Returns:
             Response -- 200, 404, or 500 status code
+
+        To DELETE an interview, make a delete request to:
+        http://localhost:8000/interviews/1
+
+        NOTE: Replace the 1 with the ID of the interview you wish to delete.
         '''
 
         try: 
@@ -102,7 +141,18 @@ class Interviews(ViewSet):
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)   
+
     def update(self, request, pk=None):
+        '''
+        Handles PUT request for a single interview
+        Returns:
+            Response -- 200, 404, or 500 status code
+
+        To UPDATE an interview, make a PUT request to:
+        http://localhost:8000/interviews/1
+
+        NOTE: Replace the 1 with the ID of the interview you wish to update.
+        '''
 
         interview = Interview.objects.get(pk=request.auth.user.applicant.id)
         interview.company_id = request.data['company_id']
