@@ -1,0 +1,12 @@
+[
+    {
+        "model": "hivemindapi.applicant",
+        "pk": 1,
+        "fields": {
+            "user_id": 1,
+            "is_employed": false,
+            "linkedin_profile": "https://www.linkedin.com/in/lauren-riddle-9129a6194/",
+            "cohort_id": 1
+        }
+    }
+]

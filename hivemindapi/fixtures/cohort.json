@@ -1,0 +1,44 @@
+[
+    {
+        "model": "hivemindapi.cohort",
+        "pk": 1,
+        "fields": {
+            "cohort": "Day Cohort 36"
+        }
+    },
+    {
+        "model": "hivemindapi.cohort",
+        "pk": 2,
+        "fields": {
+            "cohort": "Day Cohort 37"      
+        }
+    },
+    {
+        "model": "hivemindapi.cohort",
+        "pk": 3,
+        "fields": {
+            "cohort": "Day Cohort 38"
+        }
+    },
+    {
+        "model": "hivemindapi.cohort",
+        "pk": 4,
+        "fields": {
+            "cohort": "Day Cohort 39"
+        }
+    },
+    {
+        "model": "hivemindapi.cohort",
+        "pk": 5,
+        "fields": {
+            "cohort": "Day Cohort 40"
+        }
+    },
+    {
+        "model": "hivemindapi.cohort",
+        "pk": 6,
+        "fields": {
+            "cohort": "Day Cohort 41"
+        }
+    }
+]

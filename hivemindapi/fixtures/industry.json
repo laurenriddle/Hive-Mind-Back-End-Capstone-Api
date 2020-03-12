@@ -1,0 +1,86 @@
+[
+    {
+        "model": "hivemindapi.industry",
+        "pk": 1,
+        "fields": {
+            "industry": "Web Developement"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 2,
+        "fields": {
+            "industry": "Information Technology"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 3,
+        "fields": {
+            "industry": "SaaS"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 4,
+        "fields": {
+            "industry": "Financial Technology"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 5,
+        "fields": {
+            "industry": "Cloud-based solutions or Services"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 6,
+        "fields": {
+            "industry": "Data Analytics"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 7,
+        "fields": {
+            "industry": "Consulting"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 8,
+        "fields": {
+            "industry": "Media & Advertising"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 9,
+        "fields": {
+            "industry": "Publishing"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 10,
+        "fields": {
+            "industry": "Entertainment"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 11,
+        "fields": {
+            "industry": "Retail or eCommerce"
+        }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 12,
+        "fields": {
+            "industry": "Healthcare"
+        }
+    }
+]
