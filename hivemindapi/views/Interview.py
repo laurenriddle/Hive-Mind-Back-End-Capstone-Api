@@ -76,12 +76,12 @@ class Interviews(ViewSet):
         Response -- JSON serialized list of Payment Types
         Author: Lauren Riddle
         '''
-        user = request.auth.user.customer.id
+        user = request.auth.user.applicant.id
         # list payment types
-        types = PaymentType.objects.filter(customer_id=user)
+        interviews = Interview.objects.filter(applicant_id=user)
 
         # take repsonse and covert to JSON
-        serializer = PaymentTypeSerializer(types, many=True, context={'request': request})
+        serializer = InterviewSerializer(interviews, many=True, context={'request': request})
 
         # return repsonse as JSON
         return Response(serializer.data)
