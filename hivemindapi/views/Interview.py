@@ -94,7 +94,7 @@ class Interviews(ViewSet):
 
         try: 
             interview = Interview.objects.get(pk=pk)
-            interview.delete(force_policy=None)
+            interview.delete()
 
             return Response({}, status=status.HTTP_204_NO_CONTENT)
 
