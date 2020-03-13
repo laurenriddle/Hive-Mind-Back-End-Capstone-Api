@@ -82,5 +82,12 @@
         "fields": {
             "industry": "Healthcare"
         }
+    },
+    {
+        "model": "hivemindapi.industry",
+        "pk": 12,
+        "fields": {
+            "industry": "Other"
+        }
     }
 ]
