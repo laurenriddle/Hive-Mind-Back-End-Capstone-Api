@@ -59,7 +59,6 @@ class Cohorts(ViewSet):
         To access all cohorts: 
         http://localhost:8000/cohorts
         '''
-        user = request.auth.user.applicant.id
 
         # list cohort
         cohorts = Cohort.objects.all()
