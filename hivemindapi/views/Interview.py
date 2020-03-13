@@ -85,16 +85,21 @@ class Interviews(ViewSet):
         Handles the GET all requstes to the interview resource
         Returns:
         Response -- JSON serialized list of interview
+        To get all interviews with no filtering:
+        http://localhost:8000/interviews
+        
+        To filter by LOGGED IN APPLICANT and COMPANY:
+        http://localhost:8000/interviews?applicant=true&&company=1
 
-        To filter by APPLICANT and COMPANY:
-        http://localhost:8000/interviews?applicant=1&&company=1
-
-        NOTE: Replace the 1 with whichever ID number you need.
+        NOTE: Replace the 1 with whichever company ID number you need.
 
         To filter by LOGGED IN APPLICANT:
         http://localhost:8000/interviews?applicant=true
+
         To filter by COMPANY:
         http://localhost:8000/interviews?company=1
+        NOTE: Replace the 1 with whichever company ID number you need.
+
 
         '''
         # gets all interviews
