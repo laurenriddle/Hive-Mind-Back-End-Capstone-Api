@@ -59,7 +59,6 @@ class Industries(ViewSet):
         To access all industries: 
         http://localhost:8000/industries
         '''
-        user = request.auth.user.applicant.id
 
         # list industry
         industries = Industry.objects.all()

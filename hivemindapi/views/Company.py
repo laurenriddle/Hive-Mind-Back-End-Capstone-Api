@@ -65,7 +65,6 @@ class Companies(ViewSet):
         NOTE: Replace atiba with any company name that you would like to find
 
         '''
-        user = request.auth.user.applicant.id
 
         # list companies
         companies = Company.objects.all()
