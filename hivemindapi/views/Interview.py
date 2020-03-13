@@ -7,7 +7,6 @@ from hivemindapi.models import Interview
 from .Applicant import ApplicantSerializer
 
 
-
 class InterviewSerializer(serializers.HyperlinkedModelSerializer):
     '''
     JSON serializer for interviews
@@ -22,18 +21,20 @@ class InterviewSerializer(serializers.HyperlinkedModelSerializer):
             view_name='interview',
             lookup_field='id'
         )
-        fields = ('id', 'offer', 'position',  'date', 'review', 'advice', 'interview_type', 'in_person', 'code_challege', 'applicant', 'company_id' )
+        fields = ('id', 'offer', 'position',  'date', 'review', 'advice',
+                  'interview_type', 'in_person', 'code_challege', 'applicant', 'company_id')
         depth = 2
+
 
 class Interviews(ViewSet):
     '''
-    
+
     This class houses functions for List, Retrieve, Destroy, Update, and Create
     '''
 
     def retrieve(self, request, pk=None):
         '''
-        Handles GET requests for a single Interview 
+        Handles GET requests for a single Interview
         Returns:
             Response --- JSON serialized Interviews instance
 
@@ -44,7 +45,8 @@ class Interviews(ViewSet):
         '''
         try:
             interview = Interview.objects.get(pk=pk)
-            serializer = InterviewSerializer(interview, context={'request': request})
+            serializer = InterviewSerializer(
+                interview, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
@@ -52,7 +54,7 @@ class Interviews(ViewSet):
     def create(self, request):
         '''
         Handles POST operations
-        Returns: 
+        Returns:
             Response --- JSON serialized Interview instance
 
         To create an Interview, make a POST to this URL:
@@ -73,25 +75,24 @@ class Interviews(ViewSet):
 
         new_interview.save()
 
-        serializer = InterviewSerializer(new_interview, context ={'request': request})
+        serializer = InterviewSerializer(
+            new_interview, context={'request': request})
 
         return Response(serializer.data)
-    
 
     def list(self, request):
         '''
         Handles the GET all requstes to the interview resource
-        Returns: 
+        Returns:
         Response -- JSON serialized list of interview
 
-        To filter by APPLICANT and COMPANY: 
+        To filter by APPLICANT and COMPANY:
         http://localhost:8000/interviews?applicant=1&&company=1
 
         NOTE: Replace the 1 with whichever ID number you need.
 
-        To filter by APPLICANT: 
-        http://localhost:8000/interviews?applicant=1
-
+        To filter by LOGGED IN APPLICANT:
+        http://localhost:8000/interviews?applicant=true
         To filter by COMPANY:
         http://localhost:8000/interviews?company=1
 
@@ -100,12 +101,13 @@ class Interviews(ViewSet):
         interviews = Interview.objects.all()
 
         # defines the user ID
-        user = request.auth.user.applicant.id
+        applicant_id = request.auth.user.applicant.id
 
-        # filter by applicant ID
-        applicant_id = self.request.query_params.get('applicant', None)
-        if applicant_id is not None:
+        # filter by logged in applicant ID
+        is_logged_in_applicant = self.request.query_params.get('applicant', False)
+        if is_logged_in_applicant == 'true':
             interviews = interviews.filter(applicant__id=applicant_id)
+       
 
         # filter by company ID
         company_id = self.request.query_params.get('company', None)
