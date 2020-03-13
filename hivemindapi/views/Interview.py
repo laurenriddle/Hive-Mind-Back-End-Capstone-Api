@@ -5,6 +5,7 @@ from rest_framework import serializers
 from rest_framework import status
 from hivemindapi.models import Interview
 from .Applicant import ApplicantSerializer
+from .Company import CompanySerializer
 
 
 class InterviewSerializer(serializers.HyperlinkedModelSerializer):
@@ -14,6 +15,7 @@ class InterviewSerializer(serializers.HyperlinkedModelSerializer):
     Author: Lauren Riddle
     '''
     applicant = ApplicantSerializer()
+    company = CompanySerializer()
 
     class Meta:
         model = Interview
@@ -22,7 +24,7 @@ class InterviewSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field='id'
         )
         fields = ('id', 'offer', 'position',  'date', 'review', 'advice',
-                  'interview_type', 'in_person', 'code_challege', 'applicant', 'company_id')
+                  'interview_type', 'in_person', 'code_challege', 'applicant', 'company')
         depth = 2
 
 
