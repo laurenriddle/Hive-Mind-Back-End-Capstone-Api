@@ -163,7 +163,7 @@ class Interviews(ViewSet):
         NOTE: Replace the 1 with the ID of the interview you wish to update.
         '''
 
-        interview = Interview.objects.get(pk=request.auth.user.applicant.id)
+        interview = Interview.objects.get(pk=pk)
         interview.company_id = request.data['company_id']
         interview.offer = request.data['offer']
         interview.position = request.data['position']
