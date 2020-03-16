@@ -44,7 +44,7 @@ class ApplicantSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field='id'
         )
         depth = 2
-        fields = ('id', 'linkedin_profile', 'user', 'cohort', 'is_employed', 'employer', 'image')
+        fields = ('id', 'linkedin_profile', 'user', 'cohort', 'is_employed', 'employer', 'image', 'aboutme')
 
 
 class Users(ViewSet):
@@ -140,6 +140,7 @@ class Applicants(ViewSet):
         applicant.is_employed = request.data["is_employed"]
         applicant.employer = request.data["employer"]
         applicant.image = request.data["image"]
+        applicant.aboutme = request.data["aboutme"]
         applicant.save()
 
 
