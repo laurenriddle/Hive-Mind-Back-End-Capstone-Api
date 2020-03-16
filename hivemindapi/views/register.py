@@ -63,6 +63,9 @@ def register_user(request):
         cohort_id=req_body['cohort_id'],
         is_employed=req_body['is_employed'],
         linkedin_profile=req_body['linkedin_profile'],
+        aboutme=req_body['aboutme'],
+        employer=req_body['employer'],
+        image=req_body['image'],
     )
 
 
