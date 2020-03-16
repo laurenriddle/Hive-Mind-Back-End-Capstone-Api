@@ -11,8 +11,8 @@ class CompanySerializer(serializers.HyperlinkedModelSerializer):
     '''
     JSON serializer for companies
     Arguments: serializers.HyperlinkedModelSerializer
-    Author: Lauren Riddle
     '''
+    # serializes the industry
     industry = IndustrySerializer()
 
     class Meta:
@@ -43,6 +43,7 @@ class Companies(ViewSet):
         NOTE: Replace the 1 with any company ID you wish to retrieve 
         '''
         try:
+            # get single company
             company = Company.objects.get(pk=pk)
             serializer = CompanySerializer(company, context={'request': request})
             return Response(serializer.data)
@@ -90,11 +91,13 @@ class Companies(ViewSet):
         http://localhost:8000/companies
 
         '''
+        # create new company instance
         new_company = Company()
         new_company.name = request.data['name']
         new_company.city = request.data['city']
         new_company.industry_id = request.data['industry_id']
         
+        # save company
         new_company.save()
 
         serializer = CompanySerializer(new_company, context ={'request': request})

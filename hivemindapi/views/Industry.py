@@ -11,7 +11,6 @@ class IndustrySerializer(serializers.HyperlinkedModelSerializer):
     '''
     JSON serializer for interviews
     Arguments: serializers.HyperlinkedModelSerializer
-    Author: Lauren Riddle
     '''
 
     class Meta:
@@ -43,6 +42,7 @@ class Industries(ViewSet):
         NOTE: Replace the 1 with any ID you wish to retrieve 
         '''
         try:
+            # get single industry
             industry = Industry.objects.get(pk=pk)
             serializer = IndustrySerializer(industry, context={'request': request})
             return Response(serializer.data)
@@ -60,10 +60,10 @@ class Industries(ViewSet):
         http://localhost:8000/industries
         '''
 
-        # list industry
+        # list industries
         industries = Industry.objects.all()
 
-        # take repsonse and covert to JSON
+        # take response and covert to JSON
         serializer = IndustrySerializer(industries, many=True, context={'request': request})
 
         # return repsonse as JSON

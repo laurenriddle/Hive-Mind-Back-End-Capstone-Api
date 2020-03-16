@@ -11,7 +11,7 @@ class CohortSerializer(serializers.HyperlinkedModelSerializer):
     '''
     JSON serializer for cohorts
     Arguments: serializers.HyperlinkedModelSerializer
-    Author: Lauren Riddle
+
     '''
 
     class Meta:
@@ -52,7 +52,7 @@ class Cohorts(ViewSet):
 
     def list(self, request):
         '''
-        Handles the GET all requstes to the cohort resource
+        Handles the GET all requests to the cohort resource
         Returns: 
         Response -- JSON serialized list of cohort
 
