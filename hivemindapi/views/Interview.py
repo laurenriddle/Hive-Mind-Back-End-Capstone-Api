@@ -12,8 +12,8 @@ class InterviewSerializer(serializers.HyperlinkedModelSerializer):
     '''
     JSON serializer for interviews
     Arguments: serializers.HyperlinkedModelSerializer
-    Author: Lauren Riddle
     '''
+    # serialize applicant and company
     applicant = ApplicantSerializer()
     company = CompanySerializer()
 
@@ -46,6 +46,7 @@ class Interviews(ViewSet):
         NOTE: Replace the 1 with the ID number of the interview you wish to retrieve.
         '''
         try:
+            # get single interview
             interview = Interview.objects.get(pk=pk)
             serializer = InterviewSerializer(
                 interview, context={'request': request})
@@ -63,6 +64,7 @@ class Interviews(ViewSet):
         http://localhost:8000/interviews
 
         '''
+        # create new interview instance
         new_interview = Interview()
         new_interview.company_id = request.data['company_id']
         new_interview.offer = request.data['offer']
@@ -75,6 +77,7 @@ class Interviews(ViewSet):
         new_interview.code_challege = request.data['code_challege']
         new_interview.applicant_id = request.auth.user.applicant.id
 
+        # save interview
         new_interview.save()
 
         serializer = InterviewSerializer(
@@ -141,6 +144,7 @@ class Interviews(ViewSet):
         '''
 
         try: 
+            # delete single interview
             interview = Interview.objects.get(pk=pk)
             interview.delete()
 
@@ -162,7 +166,7 @@ class Interviews(ViewSet):
 
         NOTE: Replace the 1 with the ID of the interview you wish to update.
         '''
-
+        # edit single interview
         interview = Interview.objects.get(pk=pk)
         interview.company_id = request.data['company_id']
         interview.offer = request.data['offer']
@@ -174,5 +178,7 @@ class Interviews(ViewSet):
         interview.in_person = request.data['in_person']
         interview.code_challege = request.data['code_challege']
         interview.applicant_id = request.auth.user.applicant.id
+        
+        # save changes
         interview.save()
         return Response({}, status=status.HTTP_204_NO_CONTENT)

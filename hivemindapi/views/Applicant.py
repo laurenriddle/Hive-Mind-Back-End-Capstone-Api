@@ -7,11 +7,12 @@ from django.contrib.auth.models import User
 from hivemindapi.models import Applicant
 from rest_framework.decorators import action
 
-#! This is a nested serializer; PAY ATTENTION
-
 
 class UsersSerializer(serializers.HyperlinkedModelSerializer):
-    """JSON serializer for users
+    """
+    JSON serializer for users.
+    This allows us to embed the user information into applicant.
+
     Arguments:
         serializers
     """
@@ -25,11 +26,13 @@ class UsersSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ApplicantSerializer(serializers.HyperlinkedModelSerializer):
-    """JSON serializer for applicant
+    """
+    JSON serializer for applicant
     Arguments:
         serializers
     """
 
+    # serializes the user
     user = UsersSerializer()
 
     class Meta:
@@ -45,7 +48,7 @@ class ApplicantSerializer(serializers.HyperlinkedModelSerializer):
 class Users(ViewSet):
     '''
     
-    This class houses functions for Retrieve for users
+    This class houses functions to retrieve a user
    
     '''
     def retrieve(self, request, pk=None):
@@ -75,11 +78,12 @@ class Applicants(ViewSet):
    
     '''
     def retrieve(self, request, pk=None):
-        """Handle GET requests for single user
+        """
+        Handle GET requests for single user
         Returns:
             Response -- JSON serialized user instance
+
         To retrieve a applicant, make a GET request to:
-     
         http://localhost:8000/applicants/1
 
         NOTE: Replace the 1 with the ID of the applicant that corresponds with the user you want to retrieve.
@@ -93,18 +97,19 @@ class Applicants(ViewSet):
             return HttpResponseServerError(ex)
 
     def list(self, request):
-        """Handle GET requests to applicants resource
+        """
+        Handle GET requests to applicants resource
         Returns:
             Response -- JSON serialized list of applicants
 
-        To retrieve a user, make a GET request to:
+        To retrieve a single user, make a GET request to:
         http://localhost:8000/applicants 
         
         """
+        # filters for the authenticated user
         applicants = Applicant.objects.filter(id=request.auth.user.applicant.id)
-        print("HELLO", applicants)
-        applicant = self.request.query_params.get('applicant', None)
 
+        applicant = self.request.query_params.get('applicant', None)
         if applicant is not None:
             applicants = applicants.filter(id=applicant)
 
@@ -122,7 +127,7 @@ class Applicants(ViewSet):
             Response -- Empty body with 204 status code
             
         To update a user, make a PUT request to:
-        http://localhost:8000/applicants 
+        http://localhost:8000/applicants/profile_update
         
         """
         

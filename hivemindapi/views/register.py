@@ -16,10 +16,10 @@ def login_user(request):
 
     req_body = json.loads(request.body.decode())
 
-    # If the request is a HTTP POST, try to pull out the relevant information.
+    
     if request.method == 'POST':
 
-        # Use the built-in authenticate method to verify
+        # Use the authenticate method to verify user
         username = req_body['username']
         password = req_body['password']
         authenticated_user = authenticate(username=username, password=password)
@@ -31,7 +31,7 @@ def login_user(request):
             return HttpResponse(data, content_type='application/json')
 
         else:
-            # Bad login details were provided. So we can't log the user in.
+            # Authentication was unsuccessful, so can't log the user in.
             data = json.dumps({"valid": False})
             return HttpResponse(data, content_type='application/json')
 
@@ -57,6 +57,7 @@ def register_user(request):
         is_active=True
     )
 
+    # create a new applicant by invoking the create method
     applicant = Applicant.objects.create(
         user=new_user,
         cohort_id=req_body['cohort_id'],
@@ -64,10 +65,6 @@ def register_user(request):
         linkedin_profile=req_body['linkedin_profile'],
     )
 
-
-    #!Don't need this since we are using objects.create
-    # Commit the user to the database by saving it
-    # customer.save()
 
     # Use the REST Framework's token generator on the new user account
     token = Token.objects.create(user=new_user)

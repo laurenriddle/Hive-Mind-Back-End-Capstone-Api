@@ -3,8 +3,10 @@ from .Applicant import Applicant
 from .Company import Company
 class Interview(models.Model):
     """
-    This makes an applicant instance and defines the columns in the DB
+    This makes an interview instance and defines the columns in the DB
    
+    Foreign keys: applicant_id and company_id
+    
     """
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     applicant = models.ForeignKey(Applicant, on_delete=models.CASCADE)

@@ -5,7 +5,8 @@ from .Cohort import Cohort
 class Applicant(models.Model):
     """
     This makes an applicant instance and defines the columns in the DB
-   
+    Foreign keys: user_id and cohort_id
+
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     cohort = models.ForeignKey(Cohort, on_delete=models.CASCADE)
