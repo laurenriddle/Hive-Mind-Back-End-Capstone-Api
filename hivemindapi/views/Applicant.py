@@ -6,6 +6,7 @@ from rest_framework import status
 from django.contrib.auth.models import User
 from hivemindapi.models import Applicant
 from rest_framework.decorators import action
+from .Cohort import CohortSerializer
 
 
 class UsersSerializer(serializers.HyperlinkedModelSerializer):
@@ -34,6 +35,7 @@ class ApplicantSerializer(serializers.HyperlinkedModelSerializer):
 
     # serializes the user
     user = UsersSerializer()
+    cohort = CohortSerializer()
 
     class Meta:
         model = Applicant
@@ -42,7 +44,7 @@ class ApplicantSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field='id'
         )
         depth = 2
-        fields = ('id', 'linkedin_profile', 'user', 'cohort_id', 'is_employed')
+        fields = ('id', 'linkedin_profile', 'user', 'cohort', 'is_employed')
 
 
 class Users(ViewSet):
