@@ -12,6 +12,9 @@ class Applicant(models.Model):
     cohort = models.ForeignKey(Cohort, on_delete=models.CASCADE)
     is_employed = models.BooleanField()
     linkedin_profile = models.CharField(max_length=500, null=True)
+    image = models.CharField(max_length=300, null=True)
+    employer = models.CharField(max_length=300, null=True)
+    aboutme = models.CharField(max_length=1000, null=True)
     
 
     class Meta:
