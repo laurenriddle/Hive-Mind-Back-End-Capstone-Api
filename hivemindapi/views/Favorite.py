@@ -83,17 +83,28 @@ class Favorites(ViewSet):
         To get all favorites with no filtering:
         http://localhost:8000/favorites
         
-        To filter by LOGGED IN APPLICANT and COMPANY:
+        To filter by LOGGED IN APPLICANT and INTERVIEW:
         http://localhost:8000/favorites?applicant=true&&interview=1
 
-        NOTE: Replace the 1 with whichever company ID number you need.
+        NOTE: Replace the 1 with whichever interview ID number you need.
+
+        To filter by LOGGED IN APPLICANT and COMPANY:
+        http://localhost:8000/favorites?interview__company_id=1&&applicant=1
+        NOTE: Replace the 1 with whichever applicant ID number and company ID number you need.
 
         To filter by LOGGED IN APPLICANT:
         http://localhost:8000/favorites?applicant=true
 
         To filter by COMPANY:
-        http://localhost:8000/favorites?interview=1
+        http://localhost:8000/favorites?interview__company_id=1
+
         NOTE: Replace the 1 with whichever company ID number you need.
+
+        To filter by INTERVIEW: 
+        http://localhost:8000/favorites?interview=1
+
+        NOTE: Replace the 1 with whichever interview ID number you need.
+        
 
 
         '''
@@ -108,11 +119,16 @@ class Favorites(ViewSet):
         if is_logged_in_applicant == 'true':
             favorites = favorites.filter(applicant__id=applicant_id)
        
-
         # filter by company ID
-        company_id = self.request.query_params.get('interview', None)
+        company_id = self.request.query_params.get('interview__company_id', None)
         if company_id is not None:
-            favorites = favorites.filter(interview__company__id=company_id)
+            favorites = favorites.filter(interview__company_id=company_id)
+
+        # filter by interview ID
+        interview_id = self.request.query_params.get('interview', None)
+        if interview_id is not None:
+            favorites = favorites.filter(interview=interview_id)
+
        
 
         # take repsonse and covert to JSON
