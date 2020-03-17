@@ -89,7 +89,7 @@ class Favorites(ViewSet):
         NOTE: Replace the 1 with whichever interview ID number you need.
 
         To filter by LOGGED IN APPLICANT and COMPANY:
-        http://localhost:8000/favorites?interview__company_id=1&&applicant=1
+        http://localhost:8000/favorites?interview__company_id=1&&applicant=true
         NOTE: Replace the 1 with whichever applicant ID number and company ID number you need.
 
         To filter by LOGGED IN APPLICANT:
