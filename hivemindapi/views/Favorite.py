@@ -4,7 +4,6 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
 from hivemindapi.models import Favorite
-from .Applicant import ApplicantSerializer
 from .Interview import InterviewSerializer
 
 
@@ -14,8 +13,7 @@ class FavoriteSerializer(serializers.HyperlinkedModelSerializer):
     JSON serializer for favorites
     Arguments: serializers.HyperlinkedModelSerializer
     '''
-    # serialize applicant and interview
-    applicant = ApplicantSerializer()
+    # serialize interview
     interview = InterviewSerializer()
 
     class Meta:
@@ -24,7 +22,7 @@ class FavoriteSerializer(serializers.HyperlinkedModelSerializer):
             view_name='favorite',
             lookup_field='id'
         )
-        fields = ('id', 'interview', 'applicant')
+        fields = ('id', 'interview', 'applicant_id')
         depth = 2
 
 
