@@ -54,11 +54,11 @@ class TestCohorts(TestCase):
         self.assertEqual(response.status_code, 200)
 
         # test the contents of the data before it's serialized into JSON
-        self.assertEqual(response.data["cohort"], "Day Cohort 37")
+        self.assertEqual(response.data["cohort"], "Day Cohort 36")
 
         # Finally, test the actual rendered content as the client would receive it.
         # .encode converts from unicode to utf-8. Don't get hung up on this. It's just how we can compare apples to apples
-        self.assertIn(new_cohort2.cohort.encode(), response.content)
+        self.assertIn(new_cohort1.cohort.encode(), response.content)
 
 if __name__ == '__main__':
     unittest.main()

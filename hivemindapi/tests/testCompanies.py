@@ -33,7 +33,7 @@ class TestCompanies(TestCase):
 
     def test_post_company(self):
         # define a industry
-        self.industry = Industry.objects.create(user_id=1,
+        self.industry = Industry.objects.create(
             industry="Publishing"
             )
 
@@ -60,7 +60,7 @@ class TestCompanies(TestCase):
 
     def test_get_companies(self):
         # define a industry
-        self.industry = Industry.objects.create(user_id=1,
+        self.industry = Industry.objects.create(
             industry="Publishing"
             )
         # define a company to be POSTed to the DB
@@ -83,7 +83,7 @@ class TestCompanies(TestCase):
         self.assertEqual(len(response.data), 1)
 
         # test the contents of the data before it's serialized into JSON
-        self.assertEqual(response.data[0]["merchant_name"], "Tacobell Discover Card")
+        self.assertEqual(response.data[0]["name"], "Ingram Content Group")
 
         # Finally, test the actual rendered content as the client would receive it.
         # .encode converts from unicode to utf-8. Don't get hung up on this. It's just how we can compare apples to apples
@@ -92,7 +92,7 @@ class TestCompanies(TestCase):
 
     def test_retrieve_company(self):
         # define a industry
-        self.industry = Industry.objects.create(user_id=1,
+        self.industry = Industry.objects.create(
             industry="Publishing"
             )
         # define a company to be POSTed to the DB
@@ -110,7 +110,7 @@ class TestCompanies(TestCase):
          
          
        
-        response = self.client.get(reverse('company-detail', kwargs={'pk': 1}), HTTP_AUTHORIZATION='Token ' + str(self.token))
+        response = self.client.get(reverse('company-detail', kwargs={'pk': 2}), HTTP_AUTHORIZATION='Token ' + str(self.token))
  
 
         # Check that the response is 200 OK.
