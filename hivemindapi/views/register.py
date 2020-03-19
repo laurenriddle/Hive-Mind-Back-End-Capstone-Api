@@ -66,6 +66,8 @@ def register_user(request):
         aboutme=req_body['aboutme'],
         employer=req_body['employer'],
         image=req_body['image'],
+        jobtitle=req_body['jobtitle'],
+        location=req_body['location'],
     )
 
 
