@@ -34,5 +34,5 @@
 
 ## Front-End Client
 
-9. This API is dependent on the front-end client. To run the full app, you will need to install and run the front-end client as well. You can find it here with instructions for setup:
+9. This API is dependent on a front-end client. To run the full app, you will need to install and run the front-end client as well. You can find it here with instructions for setup:
 https://github.com/nss-cohort-36/bangazon-client-imagination-station-react
