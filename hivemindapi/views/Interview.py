@@ -105,6 +105,11 @@ class Interviews(ViewSet):
         http://localhost:8000/interviews?company=1
         NOTE: Replace the 1 with whichever company ID number you need.
 
+        To filter by ANY APPLICANT ID: 
+        http://localhost:8000/interviews?review=1
+
+        NOTE: Replace the 1 with whichever applicant ID number you need.
+
 
         '''
         # gets all interviews
@@ -117,6 +122,13 @@ class Interviews(ViewSet):
         is_logged_in_applicant = self.request.query_params.get('applicant', False)
         if is_logged_in_applicant == 'true':
             interviews = interviews.filter(applicant__id=applicant_id)
+        
+
+        # filter by applicant ID
+        applicant = self.request.query_params.get('review', None)
+        if applicant is not None:
+            interviews = interviews.filter(applicant__id=applicant)
+        
        
 
         # filter by company ID
