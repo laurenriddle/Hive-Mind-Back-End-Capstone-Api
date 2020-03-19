@@ -15,7 +15,8 @@ class Applicant(models.Model):
     image = models.CharField(max_length=300, null=True)
     employer = models.CharField(max_length=300, null=True)
     aboutme = models.CharField(max_length=1000, null=True)
-    
+    jobtitle = models.CharField(max_length=300, null=True)
+    location = models.CharField(max_length=300, null=True)
 
     class Meta:
         verbose_name = ("applicant")

@@ -44,7 +44,7 @@ class ApplicantSerializer(serializers.HyperlinkedModelSerializer):
             lookup_field='id'
         )
         depth = 2
-        fields = ('id', 'linkedin_profile', 'user', 'cohort', 'is_employed', 'employer', 'image', 'aboutme')
+        fields = ('id', 'linkedin_profile', 'user', 'cohort', 'is_employed', 'employer', 'image', 'aboutme', 'jobtitle', 'location')
 
 
 class Users(ViewSet):
@@ -104,16 +104,51 @@ class Applicants(ViewSet):
         Returns:
             Response -- JSON serialized list of applicants
 
-        To retrieve a single user, make a GET request to:
+        To retrieve all users, make a GET request to:
         http://localhost:8000/applicants 
+
+        To retrieve the LOGGED IN USER, make a get request to:
+        http://localhost:8000/applicants?applicant=True
+
+
+        To search users by FIRST NAME ONLY, make a GET request to:
+        http://localhost:8000/applicants?user_first=John
+
+        NOTE: Replace John with the name of the user that you wish to retrieve.
+
+        To search users by LAST NAME ONLY, make a GET request to:
+        http://localhost:8000/applicants?user_last=Doe
+        
+        NOTE: Replace Doe with the name of the user that you wish to retrieve.
+
+        To search users by FIRST AND LAST NAME, make a GET request to:
+        http://localhost:8000/applicants?user_first=John&&user_last=Doe
+        
+        NOTE: Replace John and Doe with the name of the user that you wish to retrieve.
+
         
         """
-        # filters for the authenticated user
-        applicants = Applicant.objects.filter(id=request.auth.user.applicant.id)
+        applicants = Applicant.objects.all()
 
-        applicant = self.request.query_params.get('applicant', None)
-        if applicant is not None:
-            applicants = applicants.filter(id=applicant)
+        # filters for the authenticated user
+        applicant = self.request.query_params.get('applicant', False)
+        if applicant is not False:
+            applicants = applicants.filter(id=request.auth.user.applicant.id)
+
+        # name filter
+        user_first = self.request.query_params.get('user_first', None)
+        user_last = self.request.query_params.get('user_last', None)
+        # filter users by first and last name
+        if user_first is not None and user_last is not None:
+            applicants = applicants.filter(user__first_name__contains=user_first, user__last_name__contains=user_last)
+        
+        # filtes for user by first name
+        if user_first is not None and user_last is None:
+             applicants = applicants.filter(user__first_name__contains=user_first)
+
+        # filters for user by last name
+        if user_last is not None and user_first is None:
+             applicants = applicants.filter(user__last_name__contains=user_last)
 
         serializer = ApplicantSerializer(
             applicants, many=True, context={'request': request})
@@ -141,6 +176,9 @@ class Applicants(ViewSet):
         applicant.employer = request.data["employer"]
         applicant.image = request.data["image"]
         applicant.aboutme = request.data["aboutme"]
+        applicant.location = request.data["location"]
+        applicant.jobtitle = request.data["jobtitle"]
+
         applicant.save()
 
 
