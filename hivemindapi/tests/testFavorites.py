@@ -39,7 +39,7 @@ class TestFavorites(TestCase):
             industry="Publishing"
         )
 
-        # define a favorite
+        # define a company
         self.company = Company.objects.create(
             name="Ingram Content Group",
             industry_id=1,
@@ -86,7 +86,7 @@ class TestFavorites(TestCase):
             industry="Publishing"
         )
 
-        # define a favorite
+        # define a company
         self.company = Company.objects.create(
             name="Ingram Content Group",
             industry_id=1,
@@ -135,7 +135,7 @@ class TestFavorites(TestCase):
             industry="Publishing"
         )
 
-        # define a favorite
+        # define a company
         self.company = Company.objects.create(
             name="Ingram Content Group",
             industry_id=1,
