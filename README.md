@@ -1,6 +1,6 @@
 ## Want to use the Hive Mind API? Follow the steps below to run the application
 
-1. Create a new directory in your terminal by running `mkdir Hive-Mind-API`. Clone down this repository by clicking the "Clone or Download" button above, copying the SSH key, and running the following command in your terminal `git clone SSHKEYGOESHERE`.
+1. Create a new directory in your terminal by running `mkdir Hive-Mind-API` and then run `cd Hive-Mind-API`. Clone down this repository by clicking the "Clone or Download" button above, copying the SSH key, and running the following command in your terminal `git clone SSHKEYGOESHERE`.
 2. After the clone is finished, run `cd Hive-Mind-Back-End-Capstone-API` in your terminal. 
 3. Create your virtual environment by typing the following commands in your terminal:
     - For OSX: 
