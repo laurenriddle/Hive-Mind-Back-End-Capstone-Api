@@ -89,7 +89,7 @@ NOTE: All fetch calls need to be made to http://localhost:8000/.
 6. Once you get a token, copy it and go to your headers settings. Add a new header with the key of "Authorization" and the value of "Token YOURTOKENGOESHERE" (see image #3 below).
 
 ### #3
-<img src="./readmeimg/AddToken.png" alt="Register" width="452" height="233" />
+<img src="./readmeimg/AddToken.png" alt="Register" width="1000" height="233" />
 
 7. Once you have your token, you will then have access to all of the fetch calls available for the API. If you want to make a fetch call. simply input into Postman the URL you would like to make the fetch call to, pass your token and content-type in the header, and (if you are making a POST or a PUT) pass the object that you would like to send to the database in the body of the request. 
 
