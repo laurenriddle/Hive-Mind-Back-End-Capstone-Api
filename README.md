@@ -56,40 +56,40 @@ NOTE: All fetch calls need to be made to http://localhost:8000/.
 ### Using the Hive Mind API Independantly from its Client
 1. Follow steps 1-8 above to set up the API and perform all installations needed to run it. 
 2. Download Postman (https://www.postman.com/) and then open the app.
-3. You will need to register a new user in the database so that you will have an authentication token, which is required for you to communicate with this API. First, in Postman, select the "New" button in the top, left corner. Select type "request", in "Request Name" put Register and under collections/folders, create a new folder called "Hive Mind" and select it. Save the request. 
-4. Once you create the request, a tab will open up in Postman where you and you can use this tab to make fetch requests to the database. The first request you need to make is a POST request to http://localhost:8000/register. To do this, you need to set a header, where the key is "Content-Typ" and the value is "application/json" (see image #1 below). After you do create the header, copy the object below, go to body, select the option for "raw", and paste this object into the body (see image #2 below). 
+3. You will need to register a new user in the database so that you will have an authentication token, which is required for you to communicate with this API. First, in Postman, select the "New" button in the top, left corner. Select type "request", set the request name to "Register" and under collections/folders, create a new folder called "Hive Mind" and select it. Save the request. 
+4. Once you create the request, a tab will open up in Postman that allows you to make fetch requests to the database. The first request you need to make is a POST request to http://localhost:8000/register. To do this, you need to set a header, where the key is "Content-Type" and the value is "application/json" (see image #1 below). After you create the header, copy the object below, go to body, select the option for "raw", and paste this object into the body (see image #2 below). 
 
-- Register Object: 
-`{
-	"username": "johnd",
-	"first_name": "John",
-	"last_name": "Doe",
-	"email": "jdoe@gmail.com",
-	"password": "123",
-	"cohort_id": 1,
-	"is_employed": true,
-	"image": null,
-	"employer": null,
-	"aboutme": null,
-	"jobtitle": "Software Developer",
-	"location": "Nashville",
-	"linkedin_profile": null
-}`
+	- Register Object: 
+	`{
+		"username": "johnd",
+		"first_name": "John",
+		"last_name": "Doe",
+		"email": "jdoe@gmail.com",
+		"password": "123",
+		"cohort_id": 1,
+		"is_employed": true,
+		"image": null,
+		"employer": null,
+		"aboutme": null,
+		"jobtitle": "Software Developer",
+		"location": "Nashville",
+		"linkedin_profile": null
+	}`
 
-5. Once you have set the body and header of the request set, make sure you have the URL set to http://localhost:8000/register and the request method is set to POST. When you have these configured, select send. If the register was successful, you will see a token returned in the response section (see image #2 below).
+5. Once you have the body and header of the request set, make sure you have the URL set to http://localhost:8000/register and the request method is set to POST. When you have these configured, select send. If the register was successful, you will see a token returned in the response section (see image #2 below).
 
 
 
 ### #1
-<img src="./readmeimg/Headers.png" alt="Headers" width="1136" height="414" />
+<img src="./readmeimg/Headers.png" alt="Headers" width="568" height="207" />
 
 ### #2
-<img src="./readmeimg/RegisterBody.png" alt="Register" width="1136" height="414" />
+<img src="./readmeimg/RegisterBody.png" alt="Register" width="568" height="207" />
 
 6. Once you get a token, copy it and go to your headers settings. Add a new header with the key of "Authorization" and the value of "Token YOURTOKENGOESHERE" (see image #3 below).
 
 ### #3
-<img src="./readmeimg/AddToken.png" alt="Register" width="1136" height="414" />
+<img src="./readmeimg/AddToken.png" alt="Register" width="568" height="207" />
 
 7. Once you have your token, you will then have access to all of the fetch calls available for the API. If you want to make a fetch call. simply input into Postman the URL you would like to make the fetch call to, pass your token and content-type in the header, and (if you are making a POST or a PUT) pass the object that you would like to send to the database in the body of the request. 
 
