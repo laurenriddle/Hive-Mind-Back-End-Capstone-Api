@@ -84,7 +84,7 @@ NOTE: All fetch calls need to be made to http://localhost:8000/.
 <img src="./readmeimg/Headers.png" alt="Headers" width="568" height="207" />
 
 ### #2
-<img src="./readmeimg/RegisterBody.png" alt="Register" width="568" height="207" />
+<img src="./readmeimg/RegisterBody.png" alt="Register" width="1000" height="668" />
 
 6. Once you get a token, copy it and go to your headers settings. Add a new header with the key of "Authorization" and the value of "Token YOURTOKENGOESHERE" (see image #3 below).
 
