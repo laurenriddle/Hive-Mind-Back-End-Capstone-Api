@@ -91,11 +91,34 @@ NOTE: All fetch calls need to be made to http://localhost:8000/.
 ### #3
 <img src="./readmeimg/AddToken.png" alt="Register" width="1000" height="233" />
 
-7. Once you have your token, you will then have access to all of the fetch calls available for the API. If you want to make a fetch call. simply input into Postman the URL you would like to make the fetch call to, pass your token and content-type in the header, and (if you are making a POST or a PUT) pass the object that you would like to send to the database in the body of the request. 
+7. Once you have your token, you will then have access to all of the fetch calls available for the API. If you want to make a fetch call, simply input into Postman the URL you would like to make the fetch call to, pass your token and content-type in the header, and (if you are making a POST or a PUT) pass the object that you would like to send to the database in the body of the request. 
 
-8. A complete list of URLs to which you can send request is available in the documentaion below. The properties for each table in the database are available in the ERD below as well. 
+8. A complete list of URLs to which you can send request is available in the documentation below. The properties for each table in the database are available in the ERD below as well. 
 
 ## Hive Mind Documentation 
+
+### Fetch Requests
+Below are the tables that are available through this API, as well as the types of requests you can make for each table and the URLs that you need to send the requests to for each method.
+
+1. Applicant (PUT, POST, GET, RETRIEVE)
+	- To retrieve an applicant, make a GET request to: http://localhost:8000/applicants/1.
+	NOTE: Replace the 1 with the ID of the applicant that corresponds with the user you want to retrieve.
+
+	- To retrieve all users, make a GET request to: http://localhost:8000/applicants 
+
+	- To retrieve the current LOGGED IN USER, make a GET request to: http://localhost:8000/applicants?applicant=True
+
+	- To search users by FIRST NAME ONLY, make a GET request to: http://localhost:8000/applicants?user_first=John
+	NOTE: Replace John with the name of the user that you wish to retrieve.
+
+	- To search users by LAST NAME ONLY, make a GET request to: http://localhost:8000/applicants?user_last=Doe
+    NOTE: Replace Doe with the name of the user that you wish to retrieve.
+
+	- To search users by FIRST AND LAST NAME, make a GET request to: http://localhost:8000/applicants?user_first=John&&user_last=Doe
+    NOTE: Replace John and Doe with the name of the user that you wish to retrieve.
+
+        
+        
 ### Entity Relationship Diagram
 ![ERD](./readmeimg/erd2.png)
 
