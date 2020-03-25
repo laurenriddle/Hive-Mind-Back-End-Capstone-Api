@@ -81,7 +81,7 @@ NOTE: All fetch calls need to be made to http://localhost:8000/.
 
 
 ### #1
-<img src="./readmeimg/Headers.png" alt="Headers" width="568" height="207" />
+<img src="./readmeimg/Headers.png" alt="Headers" width="1000" height="233" />
 
 ### #2
 <img src="./readmeimg/RegisterBody.png" alt="Register" width="1000" height="668" />
