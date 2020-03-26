@@ -23,24 +23,21 @@ As a student who is about to graduate, when the job search process began, one th
 
 4. Install the app's dependencies:
 
-  - `pip install -r requirements.txt`
+	- `pip install -r requirements.txt`
 
 5. Build your database from the existing models:
 
-  - `python manage.py makemigrations hivemindapi`
-  - `python manage.py migrate`
+	- `python manage.py makemigrations hivemindapi`
+	- `python manage.py migrate`
 
-6. Create a superuser for your local version of the app:
 
-  - `python manage.py createsuperuser`
+6. Populate your database with initial data from fixtures files: (_NOTE: every time you run this it will remove existing data and repopulate the tables_)
 
-7. Populate your database with initial data from fixtures files: (_NOTE: every time you run this it will remove existing data and repopulate the tables_)
+	- `python manage.py loaddata */fixtures/*.json`
 
-  - `python manage.py loaddata */fixtures/*.json`
+7. Fire up your dev server and get to work!
 
-8. Fire up your dev server and get to work!
-
-  - `python manage.py runserver`
+	- `python manage.py runserver`
 
 ### Front-End Client
 
