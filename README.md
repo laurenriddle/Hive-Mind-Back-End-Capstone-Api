@@ -48,8 +48,9 @@ As a student who is about to graduate, when the job search process began, one th
 https://github.com/laurenriddle/Hive-Mind-Back-End-Capstone-Client
 
 
-NOTE: All fetch calls need to be made to http://localhost:8000/.
-## What can you do with the Hive Mind API? 
+
+## Hive Mind Documentation 
+
 ### Using the Hive Mind API with its Client
 1. Follow the instructions above to download the API and run the client. 
 
@@ -95,10 +96,9 @@ NOTE: All fetch calls need to be made to http://localhost:8000/.
 
 8. A complete list of URLs to which you can send request is available in the documentation below. The properties for each table in the database are available in the ERD below as well. 
 
-## Hive Mind Documentation 
-
 ### Fetch Requests
-Below are the tables that are available through this API, as well as the types of requests you can make for each table and the URLs that you need to send the requests to for each method.
+Below are the tables that are available through this API, as well as the types of requests you can make for each table and the URLs that you need to send the requests to for each method. 
+_NOTE: All fetch requests need to be made to http://localhost:8000/._
 
 1. __Applicant (PUT, POST, GET, RETRIEVE)__
 
