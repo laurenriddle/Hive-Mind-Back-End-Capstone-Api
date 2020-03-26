@@ -82,15 +82,16 @@ https://github.com/laurenriddle/Hive-Mind-Back-End-Capstone-Client
 
 
 ### #1
-<img src="./readmeimg/Headers.png" alt="Headers" width="1000" height="335" />
+![ERD](./readmeimg/Headers.png)
+
 
 ### #2
-<img src="./readmeimg/RegisterBody.png" alt="Register" width="1000" height="668" />
+![ERD](./readmeimg/RegisterBody.png)
 
 6. Once you get a token, copy it and go to your headers settings. Add a new header with the key of "Authorization" and the value of "Token YOURTOKENGOESHERE" (see image #3 below).
 
 ### #3
-<img src="./readmeimg/AddToken.png" alt="Register" width="1000" height="233" />
+![ERD](./readmeimg/AddToken.png)
 
 7. Once you have your token, you will then have access to all of the fetch calls available for the API. If you want to make a fetch call, simply input into Postman the URL you would like to make the fetch call to, pass your token and content-type in the header, and (if you are making a POST or a PUT) pass the object that you would like to send to the database in the body of the request. 
 
