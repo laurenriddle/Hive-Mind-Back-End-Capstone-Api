@@ -97,8 +97,11 @@ https://github.com/laurenriddle/Hive-Mind-Back-End-Capstone-Client
 
 8. A complete list of URLs to which you can send request is available in the documentation below. The properties for each table in the database are available in the ERD below as well. 
 
+### Testing 
+Hive Mind comes equiped with tests for all endpoints. To execute these tests, in your terminal run `python manage.py test hivemindapi`. If all tests have passed, you should recieve a status of OK in your terminal. 
+
 ### Fetch Requests
-Below are the tables that are available through this API, as well as the types of requests you can make for each table and the URLs that you need to send the requests to for each method. 
+Below are the endpoints that are available through this API, as well as the types of requests you can make for each endpoint and the URLs that you need to send the requests to for each method. 
 _NOTE: All fetch requests need to be made to http://localhost:8000/._
 
 1. __Applicant (PUT, POST, GET, RETRIEVE)__
@@ -201,6 +204,9 @@ _NOTE: All fetch requests need to be made to http://localhost:8000/._
         
 ### Entity Relationship Diagram
 ![ERD](./readmeimg/erd2.png)
+
+### Client
+The client documentation for this application can be found here: https://github.com/laurenriddle/Hive-Mind-Back-End-Capstone-Client
 
 ## Hive Mind Tech Stack 
 <div align="center"><img src="./readmeimg/react.png" alt="React.js" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/django.png" alt="Django" width="125" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/python.png" alt="Python" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/javascriptyellow.png" alt="Javascript" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/cloudinary.png" alt="Cloudinary" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/css3.png" alt="CSS" width="75" height="100" /></div>
