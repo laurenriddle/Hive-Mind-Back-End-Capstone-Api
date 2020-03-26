@@ -102,7 +102,6 @@ Below are the tables that are available through this API, as well as the types o
 
 1. __Applicant (PUT, POST, GET, RETRIEVE)__
 	- To retrieve an applicant, make a GET request to: http://localhost:8000/applicants/1.
-
 	_NOTE: Replace the 1 with the ID of the applicant that corresponds with the user you want to retrieve._
 	
 
@@ -111,16 +110,13 @@ Below are the tables that are available through this API, as well as the types o
 	- To retrieve the current LOGGED IN USER, make a GET request to: http://localhost:8000/applicants?applicant=True
 
 	- To search users by FIRST NAME ONLY, make a GET request to: http://localhost:8000/applicants?user_first=John
-	
 	_NOTE: Replace John with the name of the user that you wish to retrieve._
 
 	- To search users by LAST NAME ONLY, make a GET request to: http://localhost:8000/applicants?user_last=Doe
-
-    _NOTE: Replace Doe with the name of the user that you wish to retrieve._
+	_NOTE: Replace Doe with the name of the user that you wish to retrieve._
 
 	- To search users by FIRST AND LAST NAME, make a GET request to: http://localhost:8000/applicants?user_first=John&&user_last=Doe
-
-    _NOTE: Replace John and Doe with the name of the user that you wish to retrieve._
+	_NOTE: Replace John and Doe with the name of the user that you wish to retrieve._
 
         
         
