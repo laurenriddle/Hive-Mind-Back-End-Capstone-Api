@@ -30,15 +30,12 @@ As a student who is about to graduate, when the job search process began, one th
 	- `python manage.py makemigrations hivemindapi`
 	- `python manage.py migrate`
 
-6. Create a superuser for your local version of the app:
 
-	- `python manage.py createsuperuser`
-
-7. Populate your database with initial data from fixtures files: (_NOTE: every time you run this it will remove existing data and repopulate the tables_)
+6. Populate your database with initial data from fixtures files: (_NOTE: every time you run this it will remove existing data and repopulate the tables_)
 
 	- `python manage.py loaddata */fixtures/*.json`
 
-8. Fire up your dev server and get to work!
+7. Fire up your dev server and get to work!
 
 	- `python manage.py runserver`
 
