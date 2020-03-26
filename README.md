@@ -125,7 +125,7 @@ Below are the tables that are available through this API, as well as the types o
 	- To retrieve a SINGLE interview, make a GET request to: http://localhost:8000/interviews/1
 	_NOTE: Replace the 1 with the ID number of the interview you wish to retrieve._
 
-	-  To create an interview, make a POST to:http://localhost:8000/interviews
+	-  To create an interview, make a POST request to:http://localhost:8000/interviews
 
 	- To get ALL interviews, make a GET request to: http://localhost:8000/interviews
         
@@ -156,7 +156,35 @@ Below are the tables that are available through this API, as well as the types o
     - To filter companies by NAME, make a GET request to: http://localhost:8000/companies?name=atiba
 	_NOTE: Replace Atiba with any company name that you would like to find._
 
-	-  To create a company, make a POST to: http://localhost:8000/companies
+	-  To create a company, make a POST request to: http://localhost:8000/companies
+
+4. __Favorite (POST, GET, RETRIEVE, DELETE)__
+
+	- To retrieve a SINGLE Favorite, make a GET request to: http://localhost:8000/favorites/1
+	_NOTE: Replace the 1 with the ID number of the favorite you wish to retrieve._
+
+	- To create a new Favorite, make a POST request to: http://localhost:8000/favorites
+
+	- To get ALL favorites, make a GET request to: http://localhost:8000/favorites
+        
+    - To filter favorites by LOGGED IN APPLICANT and INTERVIEW, make a GET request to: http://localhost:8000/favorites?applicant=true&&interview=1 
+	_NOTE: Replace the 1 with whichever interview ID number you wish to retrieve._
+
+    - To filter favorites by LOGGED IN APPLICANT and COMPANY, make a GET request to: http://localhost:8000/favorites?interview__company_id=1&&applicant=true
+	_NOTE: Replace the 1 with whichever applicant ID number and company ID number you wish to retrieve._
+
+    - To filter favorites by LOGGED IN APPLICANT, make a GET request to: http://localhost:8000/favorites?applicant=true
+
+    - To filter favorites by COMPANY, make a GET request to: http://localhost:8000/favorites?interview__company_id=1
+	_NOTE: Replace the 1 with whichever company ID number you wish to retrieve._
+
+    - To filter favorites by INTERVIEW, make a GET request to: http://localhost:8000/favorites?interview=1
+	_NOTE: Replace the 1 with whichever interview ID number you wish to retrieve._
+
+	- To delete a favorite, make a DELETE request to: http://localhost:8000/favorites/1
+	_NOTE: Replace the 1 with the ID of the favorite you wish to delete._
+
+
 
 
         
@@ -167,7 +195,7 @@ Below are the tables that are available through this API, as well as the types o
 ### Entity Relationship Diagram
 ![ERD](./readmeimg/erd2.png)
 
-## Tech Stack 
+## Hive Mind Tech Stack 
 <div align="center"><img src="./readmeimg/react.png" alt="React.js" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/django.png" alt="Django" width="125" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/python.png" alt="Python" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/javascriptyellow.png" alt="Javascript" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/cloudinary.png" alt="Cloudinary" width="75" height="75" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<img src="./readmeimg/css3.png" alt="CSS" width="75" height="100" /></div>
 
 
