@@ -102,10 +102,10 @@ Below are the tables that are available through this API, as well as the types o
 
 1. __Applicant (PUT, POST, GET, RETRIEVE)__
 
-	- To retrieve an applicant, make a GET request to: http://localhost:8000/applicants/1.
+	- To retrieve a SINGLE applicant, make a GET request to: http://localhost:8000/applicants/1.
 	_NOTE: Replace the 1 with the ID of the applicant that corresponds with the user you want to retrieve._
 	
-	- To retrieve all users, make a GET request to: http://localhost:8000/applicants 
+	- To retrieve ALL users, make a GET request to: http://localhost:8000/applicants 
 
 	- To retrieve the current LOGGED IN USER, make a GET request to: http://localhost:8000/applicants?applicant=True
 
@@ -120,9 +120,9 @@ Below are the tables that are available through this API, as well as the types o
 
 	- To update a user, make a PUT request to: http://localhost:8000/applicants/profile_update
 
-2. __Interviews (PUT, POST, GET, RETRIEVE, DELETE)__
+2. __Interview (PUT, POST, GET, RETRIEVE, DELETE)__
 
-	- To retrieve a single interview, make a GET request to: http://localhost:8000/interviews/1
+	- To retrieve a SINGLE interview, make a GET request to: http://localhost:8000/interviews/1
 	_NOTE: Replace the 1 with the ID number of the interview you wish to retrieve._
 
 	-  To create an interview, make a POST to:http://localhost:8000/interviews
@@ -140,13 +140,26 @@ Below are the tables that are available through this API, as well as the types o
     - To filter interviews by ANY APPLICANT ID, make a GET request to: http://localhost:8000/interviews?review=1
 	_NOTE: Replace the 1 with whichever applicant ID number you need._
 
-	-To DELETE an interview, make a DELETE request to: http://localhost:8000/interviews/1
+	- To DELETE an interview, make a DELETE request to: http://localhost:8000/interviews/1
 	_NOTE: Replace the 1 with the ID of the interview you wish to delete._
         
     - To UPDATE an interview, make a PUT request to: http://localhost:8000/interviews/1
 	_NOTE: Replace the 1 with the ID of the interview you wish to update._
         
+3. __Company (POST, GET, RETRIEVE)__
 
+	- To access a SINGLE company, make a GET request to: http://localhost:8000/companies/1
+	_NOTE: Replace the 1 with any company ID you wish to retrieve._ 
+
+	- To access ALL companies, make a GET request to: http://localhost:8000/companies
+
+    - To filter companies by NAME, make a GET request to: http://localhost:8000/companies?name=atiba
+	_NOTE: Replace Atiba with any company name that you would like to find._
+
+	-  To create a company, make a POST to: http://localhost:8000/companies
+
+
+        
 
 
         
