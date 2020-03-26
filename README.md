@@ -184,13 +184,19 @@ Below are the tables that are available through this API, as well as the types o
 	- To delete a favorite, make a DELETE request to: http://localhost:8000/favorites/1
 	_NOTE: Replace the 1 with the ID of the favorite you wish to delete._
 
+5. __Industry (GET, RETRIEVE)__
 
+	- To retrieve a SINGLE industry, make a GET request to: http://localhost:8000/industries/1
+	_NOTE: Replace the 1 with any ID you wish to retrieve._
 
+	-  To get ALL industries, make a GET request to: http://localhost:8000/industries
 
-        
-
-
-        
+6. __Cohort (GET, RETRIEVE)__
+	
+	-  To retrieve a SINGLE cohort, make a GET request to: http://localhost:8000/cohorts/1
+	_NOTE: Replace the 1 with any ID you wish to retrieve._
+    
+    - To access ALL cohorts, make a GET request to: http://localhost:8000/cohorts   
         
 ### Entity Relationship Diagram
 ![ERD](./readmeimg/erd2.png)
