@@ -51,10 +51,10 @@ https://github.com/laurenriddle/Hive-Mind-Back-End-Capstone-Client
 
 ## Hive Mind Documentation 
 
-### Using the Hive Mind API with its Client
+### Using the Hive Mind API with its client
 1. Follow the instructions above to download the API and run the client. 
 
-### Using the Hive Mind API Independantly from its Client
+### Using the Hive Mind API independently from its client
 1. Follow steps 1-8 above to set up the API and perform all installations needed to run it. 
 2. Download Postman (https://www.postman.com/) and then open the app.
 3. You will need to register a new user in the database so that you will have an authentication token, which is required for you to communicate with this API. First, in Postman, select the "New" button in the top, left corner. Select type "request", set the request name to "Register" and under collections/folders, create a new folder called "Hive Mind" and select it. Save the request. 
