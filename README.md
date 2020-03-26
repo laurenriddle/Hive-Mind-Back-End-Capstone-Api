@@ -101,22 +101,53 @@ NOTE: All fetch calls need to be made to http://localhost:8000/.
 Below are the tables that are available through this API, as well as the types of requests you can make for each table and the URLs that you need to send the requests to for each method.
 
 1. __Applicant (PUT, POST, GET, RETRIEVE)__
+
 	- To retrieve an applicant, make a GET request to: http://localhost:8000/applicants/1.
 	_NOTE: Replace the 1 with the ID of the applicant that corresponds with the user you want to retrieve._
 	
-
 	- To retrieve all users, make a GET request to: http://localhost:8000/applicants 
 
 	- To retrieve the current LOGGED IN USER, make a GET request to: http://localhost:8000/applicants?applicant=True
 
-	- To search users by FIRST NAME ONLY, make a GET request to: http://localhost:8000/applicants?user_first=John
+	- To filter users by FIRST NAME ONLY, make a GET request to: http://localhost:8000/applicants?user_first=John
 	_NOTE: Replace John with the name of the user that you wish to retrieve._
 
-	- To search users by LAST NAME ONLY, make a GET request to: http://localhost:8000/applicants?user_last=Doe
+	- To filter users by LAST NAME ONLY, make a GET request to: http://localhost:8000/applicants?user_last=Doe
 	_NOTE: Replace Doe with the name of the user that you wish to retrieve._
 
-	- To search users by FIRST AND LAST NAME, make a GET request to: http://localhost:8000/applicants?user_first=John&&user_last=Doe
+	- To filter users by FIRST AND LAST NAME, make a GET request to: http://localhost:8000/applicants?user_first=John&&user_last=Doe
 	_NOTE: Replace John and Doe with the name of the user that you wish to retrieve._
+
+	- To update a user, make a PUT request to: http://localhost:8000/applicants/profile_update
+
+2. __Interviews (PUT, POST, GET, RETRIEVE, DELETE)__
+
+	- To retrieve a single interview, make a GET request to: http://localhost:8000/interviews/1
+	_NOTE: Replace the 1 with the ID number of the interview you wish to retrieve._
+
+	-  To create an interview, make a POST to:http://localhost:8000/interviews
+
+	- To get ALL interviews, make a GET request to: http://localhost:8000/interviews
+        
+    - To filter interviews by LOGGED IN APPLICANT and COMPANY, make a GET request to:http://localhost:8000/interviews?applicant=true&&company=1
+	_NOTE: Replace the 1 with whichever company ID number you need._
+
+    - To filter interviews by LOGGED IN APPLICANT, make a GET request to:http://localhost:8000/interviews?applicant=true
+
+    - To filter interviews by COMPANY, make a GET request to:http://localhost:8000/interviews?company=1
+    _NOTE: Replace the 1 with whichever company ID number you need._
+
+    - To filter interviews by ANY APPLICANT ID, make a GET request to: http://localhost:8000/interviews?review=1
+	_NOTE: Replace the 1 with whichever applicant ID number you need._
+
+	-To DELETE an interview, make a DELETE request to: http://localhost:8000/interviews/1
+	_NOTE: Replace the 1 with the ID of the interview you wish to delete._
+        
+    - To UPDATE an interview, make a PUT request to: http://localhost:8000/interviews/1
+	_NOTE: Replace the 1 with the ID of the interview you wish to update._
+        
+
+
 
         
         
