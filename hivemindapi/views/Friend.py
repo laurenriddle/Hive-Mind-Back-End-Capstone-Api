@@ -66,6 +66,10 @@ class Friends(ViewSet):
         http://localhost:8000/friends?applicant=True
 
         
+        To retrieve friends for the LOGGED IN USER and filter by FRIEND ID, make a get request to:
+        http://localhost:8000/friends?applicant=true&&friend=4
+        
+        NOTE: Replace 4 with the ID of the friend you would like to retrieve
         """
         friends = Friend.objects.all()
 
@@ -73,6 +77,11 @@ class Friends(ViewSet):
         applicant = self.request.query_params.get('applicant', False)
         if applicant is not False:
             friends = friends.filter(applicant_id=request.auth.user.applicant.id)
+
+        # filters for friends by friend ID and logged in user
+        friend = self.request.query_params.get('friend', None)
+        if friend is not None and applicant is not False:
+            friends = friends.filter(applicant_id=request.auth.user.applicant.id, friend_id=friend)
 
         serializer = FriendSerializer(
             friends, many=True, context={'request': request})
