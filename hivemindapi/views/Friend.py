@@ -62,6 +62,9 @@ class Friends(ViewSet):
         Returns:
             Response -- JSON serialized list of applicants
 
+        To retrieve friends for the LOGGED IN USER, make a get request to:
+        http://localhost:8000/friends?applicant=True
+
         To search users by FIRST NAME ONLY, make a GET request to:
         http://localhost:8000/applicants?user_first=John
 
@@ -70,10 +73,10 @@ class Friends(ViewSet):
         """
         friends = Friend.objects.all()
 
-        # # filters for the authenticated user
-        # applicant = self.request.query_params.get('applicant', False)
-        # if applicant is not False:
-        #     applicants = applicants.filter(id=request.auth.user.applicant.id)
+        # filters for friends by the authenticated user
+        applicant = self.request.query_params.get('applicant', False)
+        if applicant is not False:
+            friends = friends.filter(applicant_id=request.auth.user.applicant.id)
 
         # # name filter
         # user_first = self.request.query_params.get('user_first', None)
