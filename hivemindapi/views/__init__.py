@@ -5,3 +5,4 @@ from .Company import Companies
 from .Cohort import Cohorts
 from .register import register_user, login_user
 from .Favorite import Favorites
+from .Friend import Friends
