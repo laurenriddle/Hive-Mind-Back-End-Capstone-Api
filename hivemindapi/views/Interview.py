@@ -109,7 +109,9 @@ class Interviews(ViewSet):
         http://localhost:8000/interviews?review=1
 
         NOTE: Replace the 1 with whichever applicant ID number you need.
-
+        
+        To filter by LOGGED IN APPLICANT and FRIENDS:
+        http://localhost:8000/interviews?friend=true
 
         '''
         # gets all interviews
@@ -122,6 +124,27 @@ class Interviews(ViewSet):
         is_logged_in_applicant = self.request.query_params.get('applicant', False)
         if is_logged_in_applicant == 'true':
             interviews = interviews.filter(applicant__id=applicant_id)
+        
+        # gets all of the applicant's friend's interviews
+        is_friend = self.request.query_params.get('friend', False)
+        if is_friend == 'true':
+            interviews = Interview.objects.raw('''
+            SELECT i.id,
+            i.offer, 
+            i.position, 
+            i.date, 
+            i.review, 
+            i.advice, 
+            i.interview_type, 
+            i.in_person, 
+            i.code_challege, 
+            i.company_id, 
+            i.applicant_id
+            FROM hivemindapi_interview i
+            JOIN hivemindapi_friend f ON i.applicant_id = f.friend_id
+            WHERE f.applicant_id = %s
+            ORDER BY i.date DESC;
+            ''', [applicant_id])
         
 
         # filter by applicant ID

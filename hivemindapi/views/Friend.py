@@ -90,7 +90,6 @@ class Friends(ViewSet):
         new_friend = Friend()
         new_friend.applicant_id = request.auth.user.applicant.id
         new_friend.friend_id = request.data['friend_id']
-       
 
         # save friend
         new_friend.save()
