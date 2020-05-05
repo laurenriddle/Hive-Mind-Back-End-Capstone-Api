@@ -5,6 +5,7 @@ from rest_framework import serializers
 from rest_framework import status
 from django.contrib.auth.models import User
 from hivemindapi.models import Friend
+from .Applicant import ApplicantSerializer
 from rest_framework.decorators import action
 
 class FriendSerializer(serializers.HyperlinkedModelSerializer):
@@ -13,6 +14,8 @@ class FriendSerializer(serializers.HyperlinkedModelSerializer):
     Arguments:
         serializers
     """
+    applicant = ApplicantSerializer()
+    friend = ApplicantSerializer()
 
     class Meta:
         model = Friend
