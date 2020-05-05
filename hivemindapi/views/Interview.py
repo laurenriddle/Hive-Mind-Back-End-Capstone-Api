@@ -125,7 +125,7 @@ class Interviews(ViewSet):
         if is_logged_in_applicant == 'true':
             interviews = interviews.filter(applicant__id=applicant_id)
         
-        # gets all of the applicant's friend's interviews
+        # filter by the applicant's friend's interviews
         is_friend = self.request.query_params.get('friend', False)
         if is_friend == 'true':
             interviews = Interview.objects.raw('''
@@ -151,9 +151,7 @@ class Interviews(ViewSet):
         applicant = self.request.query_params.get('review', None)
         if applicant is not None:
             interviews = interviews.filter(applicant__id=applicant)
-        
        
-
         # filter by company ID
         company_id = self.request.query_params.get('company', None)
         if company_id is not None:
