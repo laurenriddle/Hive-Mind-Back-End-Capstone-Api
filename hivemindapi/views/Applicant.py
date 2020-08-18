@@ -142,7 +142,7 @@ class Applicants(ViewSet):
         if user_first is not None and user_last is not None:
             applicants = applicants.filter(user__first_name__contains=user_first, user__last_name__contains=user_last)
         
-        # filtes for user by first name
+        # filters for user by first name
         if user_first is not None and user_last is None:
              applicants = applicants.filter(user__first_name__contains=user_first)
 
